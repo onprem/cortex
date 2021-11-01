@@ -11,12 +11,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/thanos-io/thanos/pkg/objstore"
+	"github.com/efficientgo/tools/core/pkg/errcapture"
+	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 
-	"github.com/thanos-io/thanos/pkg/runutil"
-
-	"github.com/pkg/errors"
+	"github.com/thanos-io/objstore"
 )
 
 // Config stores the configuration for storing and accessing blobs in filesystem.
@@ -187,7 +186,7 @@ func (b *Bucket) Upload(_ context.Context, name string, r io.Reader) (err error)
 	if err != nil {
 		return err
 	}
-	defer runutil.CloseWithErrCapture(&err, f, "close")
+	defer errcapture.Do(&err, f.Close, "close")
 
 	if _, err := io.Copy(f, r); err != nil {
 		return errors.Wrapf(err, "copy to %s", file)
@@ -200,7 +199,7 @@ func isDirEmpty(name string) (ok bool, err error) {
 	if err != nil {
 		return false, err
 	}
-	defer runutil.CloseWithErrCapture(&err, f, "dir open")
+	defer errcapture.Do(&err, f.Close, "dir open")
 
 	if _, err = f.Readdir(1); err == io.EOF {
 		return true, nil

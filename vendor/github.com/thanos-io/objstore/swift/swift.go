@@ -14,14 +14,15 @@ import (
 	"testing"
 	"time"
 
+	"github.com/efficientgo/tools/core/pkg/errcapture"
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
 	"github.com/ncw/swift"
 	"github.com/pkg/errors"
 	"github.com/prometheus/common/model"
-	"github.com/thanos-io/thanos/pkg/objstore"
-	"github.com/thanos-io/thanos/pkg/runutil"
 	"gopkg.in/yaml.v2"
+
+	"github.com/thanos-io/objstore"
 )
 
 const (
@@ -153,7 +154,7 @@ func ensureContainer(connection *swift.Connection, name string, createIfNotExist
 			return errors.Wrapf(err, "verify container %s", name)
 		}
 		if !createIfNotExist {
-			return fmt.Errorf("unable to find the expected container %s", name)
+			return errors.Errorf("unable to find the expected container %s", name)
 		}
 		if err = connection.ContainerCreate(name, swift.Headers{}); err != nil {
 			return errors.Wrapf(err, "create container %s", name)
@@ -312,7 +313,7 @@ func (c *Container) Upload(_ context.Context, name string, r io.Reader) (err err
 			return errors.Wrap(err, "create file")
 		}
 	}
-	defer runutil.CloseWithErrCapture(&err, file, "upload object close")
+	defer errcapture.Do(&err, file.Close, "upload object close")
 	if _, err := io.Copy(file, r); err != nil {
 		return errors.Wrap(err, "uploading object")
 	}

@@ -163,6 +163,11 @@ github.com/docker/go-units
 github.com/dustin/go-humanize
 # github.com/edsrzf/mmap-go v1.0.0
 github.com/edsrzf/mmap-go
+# github.com/efficientgo/tools/core v0.0.0-20210129205121-421d0828c9a6
+github.com/efficientgo/tools/core/pkg/errcapture
+github.com/efficientgo/tools/core/pkg/logerrcapture
+github.com/efficientgo/tools/core/pkg/merrors
+github.com/efficientgo/tools/core/pkg/testutil
 # github.com/facette/natsort v0.0.0-20181210072756-2cd4dd1e2dcb
 ## explicit
 github.com/facette/natsort
@@ -598,6 +603,14 @@ github.com/stretchr/objx
 github.com/stretchr/testify/assert
 github.com/stretchr/testify/mock
 github.com/stretchr/testify/require
+# github.com/thanos-io/objstore v0.0.0-unpublish => github.com/onprem/objstore v0.0.0-20211028124623-3c06a1768a8b
+## explicit
+github.com/thanos-io/objstore
+github.com/thanos-io/objstore/azure
+github.com/thanos-io/objstore/filesystem
+github.com/thanos-io/objstore/gcs
+github.com/thanos-io/objstore/s3
+github.com/thanos-io/objstore/swift
 # github.com/thanos-io/thanos v0.22.0 => github.com/thanos-io/thanos v0.19.1-0.20210923155558-c15594a03c45
 ## explicit
 github.com/thanos-io/thanos/pkg/block
@@ -622,11 +635,6 @@ github.com/thanos-io/thanos/pkg/http
 github.com/thanos-io/thanos/pkg/metadata/metadatapb
 github.com/thanos-io/thanos/pkg/model
 github.com/thanos-io/thanos/pkg/objstore
-github.com/thanos-io/thanos/pkg/objstore/azure
-github.com/thanos-io/thanos/pkg/objstore/filesystem
-github.com/thanos-io/thanos/pkg/objstore/gcs
-github.com/thanos-io/thanos/pkg/objstore/s3
-github.com/thanos-io/thanos/pkg/objstore/swift
 github.com/thanos-io/thanos/pkg/pool
 github.com/thanos-io/thanos/pkg/promclient
 github.com/thanos-io/thanos/pkg/rules/rulespb

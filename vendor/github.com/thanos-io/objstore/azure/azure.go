@@ -18,8 +18,9 @@ import (
 	"github.com/go-kit/kit/log/level"
 	"github.com/pkg/errors"
 	"github.com/prometheus/common/model"
-	"github.com/thanos-io/thanos/pkg/objstore"
 	yaml "gopkg.in/yaml.v2"
+
+	"github.com/thanos-io/objstore"
 )
 
 const (
