@@ -1,3 +1,4 @@
+//go:build requires_docker
 // +build requires_docker
 
 package e2e_test
@@ -12,7 +13,7 @@ import (
 	"github.com/go-kit/log"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"github.com/thanos-io/thanos/pkg/objstore/s3"
+	"github.com/thanos-io/objstore/s3"
 	"gopkg.in/yaml.v2"
 
 	"github.com/cortexproject/cortex/integration/e2e"

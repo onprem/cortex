@@ -49,6 +49,7 @@ require (
 	github.com/sony/gobreaker v0.4.1
 	github.com/spf13/afero v1.3.4
 	github.com/stretchr/testify v1.7.0
+	github.com/thanos-io/objstore v0.0.0-unpublish
 	github.com/thanos-io/thanos v0.22.0
 	github.com/uber/jaeger-client-go v2.29.1+incompatible
 	github.com/weaveworks/common v0.0.0-20210913144402-035033b78a78
@@ -85,3 +86,5 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.38.0
 // confused about which version is the latest one. v0.22.0 was released in July, but latest tag reachable from main
 // is v0.19.1. We pin version from late september here. Feel free to remove when updating to later version.
 replace github.com/thanos-io/thanos v0.22.0 => github.com/thanos-io/thanos v0.19.1-0.20210923155558-c15594a03c45
+
+replace github.com/thanos-io/objstore v0.0.0-unpublish => github.com/onprem/objstore v0.0.0-20211028124623-3c06a1768a8b
