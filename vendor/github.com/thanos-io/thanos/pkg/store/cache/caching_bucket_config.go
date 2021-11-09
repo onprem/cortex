@@ -6,8 +6,9 @@ package storecache
 import (
 	"time"
 
+	"github.com/thanos-io/objstore"
+
 	"github.com/thanos-io/thanos/pkg/cache"
-	"github.com/thanos-io/thanos/pkg/objstore"
 )
 
 // Codec for encoding and decoding results of Iter call.

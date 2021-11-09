@@ -12,7 +12,8 @@ import (
 	"github.com/go-kit/kit/log"
 	"github.com/oklog/ulid"
 	"github.com/pkg/errors"
-	"github.com/thanos-io/thanos/pkg/objstore"
+	"github.com/thanos-io/objstore"
+
 	"github.com/thanos-io/thanos/pkg/runutil"
 )
 

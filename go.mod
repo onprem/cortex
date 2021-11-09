@@ -31,6 +31,8 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/grafana/dskit v0.0.0-20211011144203-3a88ec0b675f
 	github.com/json-iterator/go v1.1.11
+	github.com/lann/builder v0.0.0-20180802200727-47ae307949d0 // indirect
+	github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0 // indirect
 	github.com/lib/pq v1.3.0
 	github.com/minio/minio-go/v7 v7.0.10
 	github.com/mitchellh/go-wordwrap v1.0.0
@@ -85,6 +87,6 @@ replace google.golang.org/grpc => google.golang.org/grpc v1.38.0
 // currently fails because Thanos isn't merging release branches to main branch, and Go modules system is then
 // confused about which version is the latest one. v0.22.0 was released in July, but latest tag reachable from main
 // is v0.19.1. We pin version from late september here. Feel free to remove when updating to later version.
-replace github.com/thanos-io/thanos v0.22.0 => github.com/thanos-io/thanos v0.19.1-0.20210923155558-c15594a03c45
+replace github.com/thanos-io/thanos v0.22.0 => ../thanos
 
 replace github.com/thanos-io/objstore v0.0.0-unpublish => github.com/onprem/objstore v0.0.0-20211028124623-3c06a1768a8b

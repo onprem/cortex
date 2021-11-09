@@ -24,6 +24,7 @@ import (
 	"github.com/prometheus/prometheus/pkg/labels"
 	"github.com/prometheus/prometheus/pkg/relabel"
 	"github.com/prometheus/prometheus/tsdb"
+	"github.com/thanos-io/objstore"
 	"golang.org/x/sync/errgroup"
 	"gopkg.in/yaml.v2"
 
@@ -31,7 +32,6 @@ import (
 	"github.com/thanos-io/thanos/pkg/errutil"
 	"github.com/thanos-io/thanos/pkg/extprom"
 	"github.com/thanos-io/thanos/pkg/model"
-	"github.com/thanos-io/thanos/pkg/objstore"
 	"github.com/thanos-io/thanos/pkg/runutil"
 )
 
@@ -660,9 +660,9 @@ func (f *DeduplicateFilter) DuplicateIDs() []ulid.ULID {
 
 func addNodeBySources(root, add *Node) bool {
 	var rootNode *Node
+	childSources := add.Compaction.Sources
 	for _, node := range root.Children {
 		parentSources := node.Compaction.Sources
-		childSources := add.Compaction.Sources
 
 		// Block exists with same sources, add as child.
 		if contains(parentSources, childSources) && contains(childSources, parentSources) {

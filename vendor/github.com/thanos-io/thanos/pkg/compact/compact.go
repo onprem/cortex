@@ -22,15 +22,15 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/prometheus/pkg/labels"
 	"github.com/prometheus/prometheus/tsdb"
-	"github.com/thanos-io/thanos/pkg/extprom"
-	"github.com/thanos-io/thanos/pkg/runutil"
+	"github.com/thanos-io/objstore"
 	"golang.org/x/sync/errgroup"
 
 	"github.com/thanos-io/thanos/pkg/block"
 	"github.com/thanos-io/thanos/pkg/block/metadata"
 	"github.com/thanos-io/thanos/pkg/compact/downsample"
 	"github.com/thanos-io/thanos/pkg/errutil"
-	"github.com/thanos-io/thanos/pkg/objstore"
+	"github.com/thanos-io/thanos/pkg/extprom"
+	"github.com/thanos-io/thanos/pkg/runutil"
 )
 
 type ResolutionLevel int64
@@ -1030,6 +1030,10 @@ func (c *BucketCompactor) Compact(ctx context.Context) (rerr error) {
 		var groupErrs errutil.MultiError
 	groupLoop:
 		for _, g := range groups {
+			// Ignore groups with only one block because there is nothing to compact.
+			if len(g.IDs()) == 1 {
+				continue
+			}
 			select {
 			case groupErr := <-errChan:
 				groupErrs.Add(groupErr)

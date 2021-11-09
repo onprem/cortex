@@ -372,8 +372,10 @@ github.com/julienschmidt/httprouter
 # github.com/klauspost/cpuid v1.3.1
 github.com/klauspost/cpuid
 # github.com/lann/builder v0.0.0-20180802200727-47ae307949d0
+## explicit
 github.com/lann/builder
 # github.com/lann/ps v0.0.0-20150810152359-62de8c46ede0
+## explicit
 github.com/lann/ps
 # github.com/lib/pq v1.3.0
 ## explicit
@@ -611,7 +613,7 @@ github.com/thanos-io/objstore/filesystem
 github.com/thanos-io/objstore/gcs
 github.com/thanos-io/objstore/s3
 github.com/thanos-io/objstore/swift
-# github.com/thanos-io/thanos v0.22.0 => github.com/thanos-io/thanos v0.19.1-0.20210923155558-c15594a03c45
+# github.com/thanos-io/thanos v0.22.0 => ../thanos
 ## explicit
 github.com/thanos-io/thanos/pkg/block
 github.com/thanos-io/thanos/pkg/block/indexheader
@@ -631,10 +633,9 @@ github.com/thanos-io/thanos/pkg/exemplars/exemplarspb
 github.com/thanos-io/thanos/pkg/extprom
 github.com/thanos-io/thanos/pkg/extprom/http
 github.com/thanos-io/thanos/pkg/gate
-github.com/thanos-io/thanos/pkg/http
+github.com/thanos-io/thanos/pkg/httpconfig
 github.com/thanos-io/thanos/pkg/metadata/metadatapb
 github.com/thanos-io/thanos/pkg/model
-github.com/thanos-io/thanos/pkg/objstore
 github.com/thanos-io/thanos/pkg/pool
 github.com/thanos-io/thanos/pkg/promclient
 github.com/thanos-io/thanos/pkg/rules/rulespb

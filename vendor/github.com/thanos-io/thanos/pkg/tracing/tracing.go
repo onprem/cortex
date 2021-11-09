@@ -7,6 +7,7 @@ import (
 	"context"
 
 	"github.com/opentracing/opentracing-go"
+	"github.com/thanos-io/objstore"
 )
 
 const (
@@ -34,7 +35,11 @@ type Tracer interface {
 
 // ContextWithTracer returns a new `context.Context` that holds a reference to given opentracing.Tracer.
 func ContextWithTracer(ctx context.Context, tracer opentracing.Tracer) context.Context {
-	return context.WithValue(ctx, tracerKey, tracer)
+	return context.WithValue(
+		objstore.ContextWithTracer(ctx, tracer),
+		tracerKey,
+		tracer,
+	)
 }
 
 // tracerFromContext extracts opentracing.Tracer from the given context.
